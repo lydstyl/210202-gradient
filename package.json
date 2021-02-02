@@ -19,8 +19,8 @@
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   },
-  "name": "210202-node-ts-jest-boilerplate",
-  "description": "Utilisation de Node, TS et jest avec eslint et prettier pour Visual Studio Code.",
+  "name": "210202-gradient",
+  "description": "Calcul les quanités de manière dégradée pour des ordres d'achat de trading.",
   "version": "1.0.0",
   "keywords": [
     "TS",
