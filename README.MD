@@ -1,0 +1,1 @@
+Utilisation de Node, TS et jest avec eslint et prettier pour Visual Studio Code.
