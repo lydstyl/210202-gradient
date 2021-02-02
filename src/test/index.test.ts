@@ -1,4 +1,4 @@
-import { avg, gradient, sort123, gradientForAvg } from '../app/index'
+import { avg, gradient, sort123, gradientForAvg } from '../app/utils/utils'
 
 describe('Main index test suite', () => {
   it('calculate orders average', () => {
