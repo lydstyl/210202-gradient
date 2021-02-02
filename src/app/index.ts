@@ -1,9 +1,9 @@
 import fs = require('fs')
 import { gradientForAvg, gradientToCsv } from './utils/utils'
 
-const prices = [881, 751, 631]
+const prices = [855, 751, 621]
 
-const wantedAvg = 683
+const wantedAvg = 681
 
 const foundedGradient = gradientForAvg(prices, wantedAvg)
 
