@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs = require('fs')
 
 interface Order {
   quantity: number
@@ -18,77 +18,63 @@ export function avg(orders: Array<Order>): number {
 }
 
 export function gradient(prices: Array<number>, factor: number): Array<Order> {
-  const orders = prices.map((p) => ({quantity: 100, price: p})   )
+  const orders = prices.map((p) => ({ quantity: 100, price: p }))
 
-  return orders.map((o, index)=>{
-
+  return orders.map((o, index) => {
     if (!index) {
-      
       o.quantity = o.quantity
-      factor = factor 
+      factor = factor
     } else {
-      
-      o.quantity = o.quantity * (1-factor)
-      factor = factor +  factor
+      o.quantity = o.quantity * (1 - factor)
+      factor = factor + factor
     }
-
 
     return o
   })
 }
 
-
-export function sort123(numbers:Array<number>):Array<number> {
-  return numbers.sort(function(a, b) {
-    return a - b;
-  });
+export function sort123(numbers: Array<number>): Array<number> {
+  return numbers.sort(function (a, b) {
+    return a - b
+  })
 }
 
-export function gradientForAvg(prices: Array<number>, avgGoal: number): Array<Order> {
+export function gradientForAvg(
+  prices: Array<number>,
+  avgGoal: number,
+): Array<Order> {
   prices = sort123(prices)
-  
+
   const step = 0.0001
 
   let factor = step
 
   let orders = gradient(prices, factor)
-  // console.log('🚀 ~ gradientForAvg ~ orders', orders)
 
   let actualAvg = avg(orders)
-
 
   while (actualAvg > avgGoal) {
     factor += step
     orders = gradient(prices, factor)
     actualAvg = avg(orders)
   }
-  
+
   return orders
 }
 
-
 export function gradientToCsv(gradient: Array<Order>): string {
-  
-
   let csv = 'QUANTITY;PRICE\n'
 
-  gradient.forEach(order => {
+  gradient.forEach((order) => {
     csv += `${order.quantity};${order.price}\n`
   })
-  
+
   csv = csv.replace(/\./g, ',')
 
   return csv
-
 }
 
-
-const prices = [
-  881,
-  750,
-  683,
-  629
-]
+const prices = [881, 751, 631]
 
 const wantedAvg = 683
 
@@ -96,14 +82,9 @@ const foundedGradient = gradientForAvg(prices, wantedAvg)
 
 const csv = gradientToCsv(foundedGradient)
 
-
-
-fs.writeFile("/tmp/test2.csv", csv, function(err) {
-    if(err) {
-        return console.log(err);
-    }
-    console.log("The file was saved!");
-}); 
-
-// // Or
-// fs.writeFileSync('/tmp/test-sync', 'Hey there!');
+fs.writeFile('/tmp/test2.csv', csv, function (err) {
+  if (err) {
+    return console.log(err)
+  }
+  console.log('The file was saved!')
+})
