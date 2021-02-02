@@ -1,1 +1,1 @@
-Utilisation de Node, TS et jest avec eslint et prettier pour Visual Studio Code.
+Calcul les quanités de manière dégradée pour des ordres d'achat de trading.
