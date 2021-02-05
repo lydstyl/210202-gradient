@@ -1,9 +1,13 @@
 import fs = require('fs')
 import { gradientForAvg, gradientToCsv } from './utils/utils'
 
-const prices = [855, 751, 621]
+const priceFactor = 1
 
-const wantedAvg = 681
+const prices = [31998, 32512, 33857, 34980, 35518, 36246, 37020, 37560].map(
+  (p) => p * priceFactor,
+)
+
+const wantedAvg = 35142 * priceFactor
 
 const foundedGradient = gradientForAvg(prices, wantedAvg)
 
